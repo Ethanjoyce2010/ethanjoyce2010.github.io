@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Redirecting...</title>
+    <meta http-equiv="refresh" content="0; url=./index.html">
+    <script>
+      // SPA fallback for GitHub Pages: preserve path after redirect
+      (function() {
+        var l = window.location;
+        var redirect = './index.html' + (l.search || '') + (l.hash || '');
+        // If path is not root, keep it in hash to let the app handle routing
+        if (l.pathname && l.pathname !== '/' && !l.pathname.endsWith('/index.html')) {
+          var path = l.pathname.replace(/^\/?/, '');
+          redirect = './index.html#/' + path + (l.search || '') + (l.hash || '');
+        }
+        window.location.replace(redirect);
+      })();
+    </script>
+  </head>
+  <body>Redirecting…</body>
+</html>

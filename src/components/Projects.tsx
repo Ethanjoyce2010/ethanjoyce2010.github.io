@@ -67,7 +67,12 @@ export function Projects() {
     // Then add top repos from API
     if (repos) {
       repos
-        .filter((r) => !r.fork && !r.archived && !featuredMap.has(r.name.toLowerCase()))
+        .filter((r) =>
+          !r.fork &&
+          !r.archived &&
+          r.name.toLowerCase() !== 'ethanjoyce2010' &&
+          !featuredMap.has(r.name.toLowerCase())
+        )
         .sort((a, b) => b.stargazers_count - a.stargazers_count)
         .slice(0, 9)
         .forEach((r) => list.push(r))
