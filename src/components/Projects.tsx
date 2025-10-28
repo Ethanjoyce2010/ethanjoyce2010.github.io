@@ -71,6 +71,7 @@ export function Projects() {
           !r.fork &&
           !r.archived &&
           r.name.toLowerCase() !== 'ethanjoyce2010' &&
+          r.name.toLowerCase() !== 'ethanjoyce2010.github.io' &&
           !featuredMap.has(r.name.toLowerCase())
         )
         .sort((a, b) => b.stargazers_count - a.stargazers_count)
