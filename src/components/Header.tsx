@@ -48,6 +48,7 @@ export function Header() {
         <nav className="hidden gap-6 text-sm text-gray-300 md:flex">
           <NavLink to="/projects" onClick={handleProjectsClick} className={({isActive}: {isActive: boolean}) => isActive ? 'text-white' : 'hover:text-white'}>Projects</NavLink>
           <NavLink to="/skills" className={({isActive}: {isActive: boolean}) => isActive ? 'text-white' : 'hover:text-white'}>Skills</NavLink>
+          <NavLink to="/accomplishments" className={({isActive}: {isActive: boolean}) => isActive ? 'text-white' : 'hover:text-white'}>Accomplishments</NavLink>
           <NavLink to="/about" className={({isActive}: {isActive: boolean}) => isActive ? 'text-white' : 'hover:text-white'}>About</NavLink>
           <NavLink to="/contact" className={({isActive}: {isActive: boolean}) => isActive ? 'text-white' : 'hover:text-white'}>Contact</NavLink>
         </nav>

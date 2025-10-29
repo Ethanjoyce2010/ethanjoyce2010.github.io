@@ -8,6 +8,7 @@ import SkillsPage from './pages/SkillsPage'
 import AboutPage from './pages/AboutPage'
 import ContactPage from './pages/ContactPage'
 import SnakePage from './pages/SnakePage'
+import AccomplishmentsPage from './pages/AccomplishmentsPage'
 
 export function App() {
   const location = useLocation()
@@ -34,6 +35,7 @@ export function App() {
               <Route path="/" element={<Home />} />
               <Route path="/projects" element={<ProjectsPage />} />
               <Route path="/skills" element={<SkillsPage />} />
+              <Route path="/accomplishments" element={<AccomplishmentsPage />} />
               <Route path="/about" element={<AboutPage />} />
               <Route path="/contact" element={<ContactPage />} />
               {/* Hidden easter egg route */}
