@@ -7,6 +7,7 @@ import ProjectsPage from './pages/ProjectsPage'
 import SkillsPage from './pages/SkillsPage'
 import AboutPage from './pages/AboutPage'
 import ContactPage from './pages/ContactPage'
+import SnakePage from './pages/SnakePage'
 
 export function App() {
   const location = useLocation()
@@ -35,6 +36,8 @@ export function App() {
               <Route path="/skills" element={<SkillsPage />} />
               <Route path="/about" element={<AboutPage />} />
               <Route path="/contact" element={<ContactPage />} />
+              {/* Hidden easter egg route */}
+              <Route path="/snake" element={<SnakePage />} />
               <Route path="*" element={<Home />} />
             </Routes>
           </motion.div>
