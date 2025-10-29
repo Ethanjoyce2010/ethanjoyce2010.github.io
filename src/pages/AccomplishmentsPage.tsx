@@ -45,7 +45,7 @@ export default function AccomplishmentsPage() {
           className="relative rounded-xl border border-dashed border-white/10 p-5 text-gray-400"
         >
           <div className="mb-2 text-sm uppercase tracking-wide text-white/60">Coming soon</div>
-          <div className="text-base">Your next accomplishment will appear here.</div>
+          <div className="text-base">WIP</div> {/* TODO: add more accomplishments here */}
         </motion.article>
       </motion.div>
 
