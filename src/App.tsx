@@ -9,6 +9,7 @@ import AboutPage from './pages/AboutPage'
 import ContactPage from './pages/ContactPage'
 import SnakePage from './pages/SnakePage'
 import AccomplishmentsPage from './pages/AccomplishmentsPage'
+import ErrorPage from './pages/ErrorPage'
 
 export function App() {
   const location = useLocation()
@@ -40,7 +41,9 @@ export function App() {
               <Route path="/contact" element={<ContactPage />} />
               {/* Hidden easter egg route */}
               <Route path="/snake" element={<SnakePage />} />
-              <Route path="*" element={<Home />} />
+              {/* Error routes */}
+              <Route path="/error/:code" element={<ErrorPage />} />
+              <Route path="*" element={<ErrorPage />} />
             </Routes>
           </motion.div>
         </AnimatePresence>

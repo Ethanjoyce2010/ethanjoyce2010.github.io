@@ -13,16 +13,20 @@ export type Accomplishment = {
 
 type Props = {
   item: Accomplishment
+  onActivate?: () => void
 }
 
-export function AccomplishmentCard({ item }: Props) {
+export function AccomplishmentCard({ item, onActivate }: Props) {
   const { title, date, issuer, summary, tags, link } = item
   return (
     <motion.article
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.25 }}
-      className="group relative overflow-hidden rounded-xl border border-white/10 bg-white/[.04] p-5 shadow-[0_0_0_1px_rgba(255,255,255,0.04)_inset] hover:bg-white/[.06]"
+      className="group relative overflow-hidden rounded-xl border border-white/10 bg-white/[.04] p-5 shadow-[0_0_0_1px_rgba(255,255,255,0.04)_inset] hover:bg-white/[.06] focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/60"
+      onMouseEnter={onActivate}
+      onFocus={onActivate}
+      tabIndex={0}
     >
       {/* gradient ring */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 rounded-xl bg-[radial-gradient(40rem_20rem_at_top_right,rgba(34,211,238,0.10),transparent_60%)]" />

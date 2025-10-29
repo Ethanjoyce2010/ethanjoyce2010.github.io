@@ -37,9 +37,8 @@ function RepoCard({ repo }: { repo: Pick<Repo, 'name' | 'description' | 'languag
         <Github className="size-4 text-gray-400 opacity-75 transition group-hover:opacity-100" />
       </div>
   <p className="mt-2 max-h-12 overflow-hidden text-ellipsis text-sm text-gray-300">{repo.description || 'No description yet.'}</p>
-      <div className="mt-4 flex items-center justify-between text-xs text-gray-400">
+      <div className="mt-4 flex items-center text-xs text-gray-400">
         <span className="rounded border border-white/10 bg-white/5 px-2 py-1">{repo.language || 'Other'}</span>
-        <span>{new Date(repo.updated_at).toLocaleDateString()}</span>
       </div>
     </a>
   )
