@@ -82,7 +82,7 @@ export default function AccomplishmentsPage() {
         className="mt-10 overflow-hidden rounded-2xl border border-white/10 bg-white/[.04] p-6"
       >
         <div className="mb-1 text-xs uppercase tracking-wide text-cyan-300">Details</div>
-        <AnimatePresence mode="popLayout">
+         <AnimatePresence mode="popLayout">
           <motion.div
             key={active.id}
             variants={detailVariants}
