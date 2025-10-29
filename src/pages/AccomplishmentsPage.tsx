@@ -27,6 +27,20 @@ const accomplishments: Accomplishment[] = [
 export default function AccomplishmentsPage() {
   const [activeId, setActiveId] = useState<string>(accomplishments[0]?.id ?? 'wa-young-innovator')
   const active = useMemo(() => accomplishments.find((a) => a.id === activeId) ?? accomplishments[0], [activeId])
+  const detailVariants = {
+    initial: { opacity: 0, y: 6 },
+    animate: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.2, when: 'beforeChildren', staggerChildren: 0.03, delayChildren: 0.02 },
+    },
+    exit: { opacity: 0, y: -6, transition: { duration: 0.18, when: 'afterChildren', staggerChildren: 0.02, staggerDirection: -1 } },
+  }
+  const itemVariants = {
+    initial: { opacity: 0, y: 4 },
+    animate: { opacity: 1, y: 0, transition: { duration: 0.18 } },
+    exit: { opacity: 0, y: -4, transition: { duration: 0.15 } },
+  }
   return (
     <section className="section py-14 md:py-20">
       {/* Hero */}
@@ -64,104 +78,104 @@ export default function AccomplishmentsPage() {
       {/* Dynamic detail section that updates based on the hovered/active card */}
       <motion.div
         layout
-        transition={{ layout: { duration: 0.28, ease: 'easeInOut' } }}
+        transition={{ layout: { type: 'spring', stiffness: 260, damping: 28 } }}
         className="mt-10 overflow-hidden rounded-2xl border border-white/10 bg-white/[.04] p-6"
       >
         <div className="mb-1 text-xs uppercase tracking-wide text-cyan-300">Details</div>
         <AnimatePresence mode="popLayout">
           <motion.div
             key={active.id}
-            initial={{ opacity: 0, y: 6 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -6 }}
-            transition={{ duration: 0.18 }}
+            variants={detailVariants}
+            initial="initial"
+            animate="animate"
+            exit="exit"
             layout
           >
-            <h3 className="mb-1 text-lg font-semibold text-white/90">{active.title}</h3>
+            <motion.h3 variants={itemVariants} className="mb-1 text-lg font-semibold text-white/90">{active.title}</motion.h3>
             {active.id === 'wa-young-innovator' ? (
               <>
-            <p className="mb-4 text-sm text-gray-300">
+            <motion.p variants={itemVariants} className="mb-4 text-sm text-gray-300">
               A lightweight Streamlit app powered by Google Gemini to help with studying—chat explanations,
               research planning, auto‑generated quizzes, and rubric guidance—tailored by grade and curriculum,
               with safety filters.
-            </p>
+            </motion.p>
             <div className="grid gap-6 md:grid-cols-2">
-              <div>
+              <motion.div variants={itemVariants}>
                 <h4 className="mb-2 font-medium text-white/90">What it is</h4>
-                <ul className="list-disc space-y-1 pl-5 text-gray-300">
-                  <li>Chat explanations that guide thinking (not just answers)</li>
-                  <li>Research planners with subtopics, guiding questions, and sources</li>
-                  <li>Auto‑generated, auto‑graded practice quizzes</li>
-                  <li>Rubric criteria explained in plain language</li>
-                  <li>Safety filters, profanity guard, safe HTML, retry logic</li>
-                </ul>
-              </div>
-              <div>
+                <motion.ul variants={itemVariants} className="list-disc space-y-1 pl-5 text-gray-300">
+                  <motion.li variants={itemVariants}>Chat explanations that guide thinking (not just answers)</motion.li>
+                  <motion.li variants={itemVariants}>Research planners with subtopics, guiding questions, and sources</motion.li>
+                  <motion.li variants={itemVariants}>Auto‑generated, auto‑graded practice quizzes</motion.li>
+                  <motion.li variants={itemVariants}>Rubric criteria explained in plain language</motion.li>
+                  <motion.li variants={itemVariants}>Safety filters, profanity guard, safe HTML, retry logic</motion.li>
+                </motion.ul>
+              </motion.div>
+              <motion.div variants={itemVariants}>
                 <h4 className="mb-2 font-medium text-white/90">Benefits for students</h4>
-                <ul className="list-disc space-y-1 pl-5 text-gray-300">
-                  <li>Understand faster with clear, age‑appropriate explanations</li>
-                  <li>Practice anytime with quick, auto‑graded quizzes</li>
-                  <li>Learn to research: structured subtopics and guiding questions</li>
-                  <li>Demystify assignments: rubric criteria in plain language</li>
-                </ul>
-              </div>
-              <div>
+                <motion.ul variants={itemVariants} className="list-disc space-y-1 pl-5 text-gray-300">
+                  <motion.li variants={itemVariants}>Understand faster with clear, age‑appropriate explanations</motion.li>
+                  <motion.li variants={itemVariants}>Practice anytime with quick, auto‑graded quizzes</motion.li>
+                  <motion.li variants={itemVariants}>Learn to research: structured subtopics and guiding questions</motion.li>
+                  <motion.li variants={itemVariants}>Demystify assignments: rubric criteria in plain language</motion.li>
+                </motion.ul>
+              </motion.div>
+              <motion.div variants={itemVariants}>
                 <h4 className="mb-2 font-medium text-white/90">Benefits for teachers</h4>
-                <ul className="list-disc space-y-1 pl-5 text-gray-300">
-                  <li>Save time creating practice quizzes and study prompts</li>
-                  <li>Quick formative checks for understanding; easier differentiation</li>
-                  <li>Scaffold research and clarify expectations without full solutions</li>
-                  <li>Classroom‑friendly guardrails keep content appropriate</li>
-                </ul>
-              </div>
+                <motion.ul variants={itemVariants} className="list-disc space-y-1 pl-5 text-gray-300">
+                  <motion.li variants={itemVariants}>Save time creating practice quizzes and study prompts</motion.li>
+                  <motion.li variants={itemVariants}>Quick formative checks for understanding; easier differentiation</motion.li>
+                  <motion.li variants={itemVariants}>Scaffold research and clarify expectations without full solutions</motion.li>
+                  <motion.li variants={itemVariants}>Classroom‑friendly guardrails keep content appropriate</motion.li>
+                </motion.ul>
+              </motion.div>
             </div>
               </>
             ) : active.id === 'coderdojo-curtin-attendee' ? (
               <>
-            <p className="mb-4 text-sm text-gray-300">
+            <motion.p variants={itemVariants} className="mb-4 text-sm text-gray-300">
               CoderDojo at Curtin University is a welcoming community for young people to explore code,
               collaborate, and learn by building projects with mentor support.
-            </p>
+            </motion.p>
             <div className="grid gap-6 md:grid-cols-2">
-              <div>
+              <motion.div variants={itemVariants}>
                 <h4 className="mb-2 font-medium text-white/90">Focus areas</h4>
-                <ul className="list-disc space-y-1 pl-5 text-gray-300">
-                  <li>Hands‑on projects (from beginner to advanced)</li>
-                  <li>Pair programming and peer demos</li>
-                  <li>Mentor feedback and guidance</li>
-                  <li>Exploring languages and tools (Scratch to Python)</li>
-                </ul>
-              </div>
-              <div>
+                <motion.ul variants={itemVariants} className="list-disc space-y-1 pl-5 text-gray-300">
+                  <motion.li variants={itemVariants}>Hands‑on projects (from beginner to advanced)</motion.li>
+                  <motion.li variants={itemVariants}>Pair programming and peer demos</motion.li>
+                  <motion.li variants={itemVariants}>Mentor feedback and guidance</motion.li>
+                  <motion.li variants={itemVariants}>Exploring languages and tools (Scratch to Python)</motion.li>
+                </motion.ul>
+              </motion.div>
+              <motion.div variants={itemVariants}>
                 <h4 className="mb-2 font-medium text-white/90">What I gained</h4>
-                <ul className="list-disc space-y-1 pl-5 text-gray-300">
-                  <li>Practical coding habits and collaboration</li>
-                  <li>Confidence sharing ideas and progress</li>
-                  <li>Inspiration for new projects and skills</li>
-                  <li>Community connections in STEM</li>
-                </ul>
-              </div>
+                <motion.ul variants={itemVariants} className="list-disc space-y-1 pl-5 text-gray-300">
+                  <motion.li variants={itemVariants}>Practical coding habits and collaboration</motion.li>
+                  <motion.li variants={itemVariants}>Confidence sharing ideas and progress</motion.li>
+                  <motion.li variants={itemVariants}>Inspiration for new projects and skills</motion.li>
+                  <motion.li variants={itemVariants}>Community connections in STEM</motion.li>
+                </motion.ul>
+              </motion.div>
             </div>
-            <div className="mt-4 text-sm">
+            <motion.div variants={itemVariants} className="mt-4 text-sm">
               <a className="text-cyan-300 underline-offset-4 hover:text-cyan-200 hover:underline" href="https://codeclub.org/en/coderdojo-community" target="_blank" rel="noreferrer">
                 Learn more about CoderDojo →
               </a>
-            </div>
+            </motion.div>
               </>
             ) : (
               <>
-            {active.summary && <p className="mb-4 text-sm text-gray-300">{active.summary}</p>}
+            {active.summary && <motion.p variants={itemVariants} className="mb-4 text-sm text-gray-300">{active.summary}</motion.p>}
             {active.tags && active.tags.length > 0 && (
-              <div className="mb-2 flex flex-wrap gap-2">
+              <motion.div variants={itemVariants} className="mb-2 flex flex-wrap gap-2">
                 {active.tags.map((t) => (
                   <span key={t} className="rounded-md border border-white/10 bg-white/5 px-2 py-1 text-xs text-gray-200">{t}</span>
                 ))}
-              </div>
+              </motion.div>
             )}
             {active.link && (
-              <a className="text-sm text-cyan-300 underline-offset-4 hover:text-cyan-200 hover:underline" href={active.link} target="_blank" rel="noreferrer">
+              <motion.a variants={itemVariants} className="text-sm text-cyan-300 underline-offset-4 hover:text-cyan-200 hover:underline" href={active.link} target="_blank" rel="noreferrer">
                 Learn more →
-              </a>
+              </motion.a>
             )}
               </>
             )}
