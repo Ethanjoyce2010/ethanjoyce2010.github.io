@@ -68,9 +68,9 @@ export default function AccomplishmentsPage() {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.25 }}
-          className="relative rounded-xl border border-dashed border-white/10 p-5 text-gray-400"
+          className="relative rounded-xl border border-dashed border-black/20 p-5 text-gray-600 dark:border-white/10 dark:text-gray-400"
         >
-          <div className="mb-2 text-sm uppercase tracking-wide text-white/60">Coming soon</div>
+          <div className="mb-2 text-sm uppercase tracking-wide text-gray-700 dark:text-white/60">Coming soon</div>
           <div className="text-base">WIP</div> {/* TODO: add more accomplishments here */}
         </motion.article>
       </motion.div>
@@ -79,7 +79,7 @@ export default function AccomplishmentsPage() {
       <motion.div
         layout
         transition={{ layout: { type: 'spring', stiffness: 260, damping: 28 } }}
-        className="mt-10 overflow-hidden rounded-2xl border border-white/10 bg-white/[.04] p-6"
+        className="mt-10 overflow-hidden rounded-2xl border border-black/10 bg-black/[.04] p-6 dark:border-white/10 dark:bg-white/[.04]"
       >
         <div className="mb-1 text-xs uppercase tracking-wide text-cyan-300">Details</div>
          <AnimatePresence mode="popLayout">
@@ -91,18 +91,18 @@ export default function AccomplishmentsPage() {
             exit="exit"
             layout
           >
-            <motion.h3 variants={itemVariants} className="mb-1 text-lg font-semibold text-white/90">{active.title}</motion.h3>
+            <motion.h3 variants={itemVariants} className="mb-1 text-lg font-semibold text-gray-900 dark:text-white/90">{active.title}</motion.h3>
             {active.id === 'wa-young-innovator' ? (
               <>
-            <motion.p variants={itemVariants} className="mb-4 text-sm text-gray-300">
+            <motion.p variants={itemVariants} className="mb-4 text-sm text-gray-700 dark:text-gray-300">
               A lightweight Streamlit app powered by Google Gemini to help with studying—chat explanations,
               research planning, auto‑generated quizzes, and rubric guidance—tailored by grade and curriculum,
               with safety filters.
             </motion.p>
             <div className="grid gap-6 md:grid-cols-2">
               <motion.div variants={itemVariants}>
-                <h4 className="mb-2 font-medium text-white/90">What it is</h4>
-                <motion.ul variants={itemVariants} className="list-disc space-y-1 pl-5 text-gray-300">
+                <h4 className="mb-2 font-medium text-gray-900 dark:text-white/90">What it is</h4>
+                <motion.ul variants={itemVariants} className="list-disc space-y-1 pl-5 text-gray-700 dark:text-gray-300">
                   <motion.li variants={itemVariants}>Chat explanations that guide thinking (not just answers)</motion.li>
                   <motion.li variants={itemVariants}>Research planners with subtopics, guiding questions, and sources</motion.li>
                   <motion.li variants={itemVariants}>Auto‑generated, auto‑graded practice quizzes</motion.li>
@@ -111,8 +111,8 @@ export default function AccomplishmentsPage() {
                 </motion.ul>
               </motion.div>
               <motion.div variants={itemVariants}>
-                <h4 className="mb-2 font-medium text-white/90">Benefits for students</h4>
-                <motion.ul variants={itemVariants} className="list-disc space-y-1 pl-5 text-gray-300">
+                <h4 className="mb-2 font-medium text-gray-900 dark:text-white/90">Benefits for students</h4>
+                <motion.ul variants={itemVariants} className="list-disc space-y-1 pl-5 text-gray-700 dark:text-gray-300">
                   <motion.li variants={itemVariants}>Understand faster with clear, age‑appropriate explanations</motion.li>
                   <motion.li variants={itemVariants}>Practice anytime with quick, auto‑graded quizzes</motion.li>
                   <motion.li variants={itemVariants}>Learn to research: structured subtopics and guiding questions</motion.li>
@@ -120,8 +120,8 @@ export default function AccomplishmentsPage() {
                 </motion.ul>
               </motion.div>
               <motion.div variants={itemVariants}>
-                <h4 className="mb-2 font-medium text-white/90">Benefits for teachers</h4>
-                <motion.ul variants={itemVariants} className="list-disc space-y-1 pl-5 text-gray-300">
+                <h4 className="mb-2 font-medium text-gray-900 dark:text-white/90">Benefits for teachers</h4>
+                <motion.ul variants={itemVariants} className="list-disc space-y-1 pl-5 text-gray-700 dark:text-gray-300">
                   <motion.li variants={itemVariants}>Save time creating practice quizzes and study prompts</motion.li>
                   <motion.li variants={itemVariants}>Quick formative checks for understanding; easier differentiation</motion.li>
                   <motion.li variants={itemVariants}>Scaffold research and clarify expectations without full solutions</motion.li>
@@ -132,14 +132,14 @@ export default function AccomplishmentsPage() {
               </>
             ) : active.id === 'coderdojo-curtin-attendee' ? (
               <>
-            <motion.p variants={itemVariants} className="mb-4 text-sm text-gray-300">
+            <motion.p variants={itemVariants} className="mb-4 text-sm text-gray-700 dark:text-gray-300">
               CoderDojo at Curtin University is a welcoming community for young people to explore code,
               collaborate, and learn by building projects with mentor support.
             </motion.p>
             <div className="grid gap-6 md:grid-cols-2">
               <motion.div variants={itemVariants}>
-                <h4 className="mb-2 font-medium text-white/90">Focus areas</h4>
-                <motion.ul variants={itemVariants} className="list-disc space-y-1 pl-5 text-gray-300">
+                <h4 className="mb-2 font-medium text-gray-900 dark:text-white/90">Focus areas</h4>
+                <motion.ul variants={itemVariants} className="list-disc space-y-1 pl-5 text-gray-700 dark:text-gray-300">
                   <motion.li variants={itemVariants}>Hands‑on projects (from beginner to advanced)</motion.li>
                   <motion.li variants={itemVariants}>Pair programming and peer demos</motion.li>
                   <motion.li variants={itemVariants}>Mentor feedback and guidance</motion.li>
@@ -147,8 +147,8 @@ export default function AccomplishmentsPage() {
                 </motion.ul>
               </motion.div>
               <motion.div variants={itemVariants}>
-                <h4 className="mb-2 font-medium text-white/90">What I gained</h4>
-                <motion.ul variants={itemVariants} className="list-disc space-y-1 pl-5 text-gray-300">
+                <h4 className="mb-2 font-medium text-gray-900 dark:text-white/90">What I gained</h4>
+                <motion.ul variants={itemVariants} className="list-disc space-y-1 pl-5 text-gray-700 dark:text-gray-300">
                   <motion.li variants={itemVariants}>Practical coding habits and collaboration</motion.li>
                   <motion.li variants={itemVariants}>Confidence sharing ideas and progress</motion.li>
                   <motion.li variants={itemVariants}>Inspiration for new projects and skills</motion.li>
@@ -157,23 +157,23 @@ export default function AccomplishmentsPage() {
               </motion.div>
             </div>
             <motion.div variants={itemVariants} className="mt-4 text-sm">
-              <a className="text-cyan-300 underline-offset-4 hover:text-cyan-200 hover:underline" href="https://codeclub.org/en/coderdojo-community" target="_blank" rel="noreferrer">
+              <a className="text-cyan-700 underline-offset-4 hover:text-cyan-600 hover:underline dark:text-cyan-300 dark:hover:text-cyan-200" href="https://codeclub.org/en/coderdojo-community" target="_blank" rel="noreferrer">
                 Learn more about CoderDojo →
               </a>
             </motion.div>
               </>
             ) : (
               <>
-            {active.summary && <motion.p variants={itemVariants} className="mb-4 text-sm text-gray-300">{active.summary}</motion.p>}
+            {active.summary && <motion.p variants={itemVariants} className="mb-4 text-sm text-gray-700 dark:text-gray-300">{active.summary}</motion.p>}
             {active.tags && active.tags.length > 0 && (
               <motion.div variants={itemVariants} className="mb-2 flex flex-wrap gap-2">
                 {active.tags.map((t) => (
-                  <span key={t} className="rounded-md border border-white/10 bg-white/5 px-2 py-1 text-xs text-gray-200">{t}</span>
+                  <span key={t} className="rounded-md border border-black/10 bg-black/5 px-2 py-1 text-xs text-gray-700 dark:border-white/10 dark:bg-white/5 dark:text-gray-200">{t}</span>
                 ))}
               </motion.div>
             )}
             {active.link && (
-              <motion.a variants={itemVariants} className="text-sm text-cyan-300 underline-offset-4 hover:text-cyan-200 hover:underline" href={active.link} target="_blank" rel="noreferrer">
+              <motion.a variants={itemVariants} className="text-sm text-cyan-700 underline-offset-4 hover:text-cyan-600 hover:underline dark:text-cyan-300 dark:hover:text-cyan-200" href={active.link} target="_blank" rel="noreferrer">
                 Learn more →
               </motion.a>
             )}

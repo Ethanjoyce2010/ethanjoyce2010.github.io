@@ -108,10 +108,10 @@ export default function SnakePage() {
     const isFood = food.x === x && food.y === y
     return [
       'aspect-square w-full rounded-sm transition-colors',
-      isHead ? 'bg-cyan-400 shadow-[0_0_12px_rgba(34,211,238,.7)]' :
-      isBody ? 'bg-white/70' :
-      isFood ? 'bg-emerald-400 shadow-[0_0_10px_rgba(52,211,153,.7)]' :
-      'bg-white/[.06]'
+      isHead ? 'bg-cyan-500 shadow-[0_0_12px_rgba(34,211,238,.7)]' :
+      isBody ? 'bg-gray-900/70 dark:bg-white/70' :
+      isFood ? 'bg-emerald-500 shadow-[0_0_10px_rgba(52,211,153,.7)]' :
+      'bg-black/10 dark:bg-white/[.06]'
     ].join(' ')
   }, [snake, snakeSet, food])
 
@@ -123,17 +123,17 @@ export default function SnakePage() {
           <p className="section-subtitle">Use arrow keys or WASD. Don’t hit yourself.</p>
         </div>
         <div className="flex items-center gap-2 text-sm">
-          <span className="rounded border border-white/10 bg-white/5 px-3 py-1">Score: {score}</span>
-          <button onClick={() => setRunning((r: boolean) => !r)} className="rounded border border-white/10 bg-white/5 px-3 py-1 hover:bg-white/10">
+          <span className="rounded border border-black/10 bg-black/5 px-3 py-1 dark:border-white/10 dark:bg-white/5">Score: {score}</span>
+          <button onClick={() => setRunning((r: boolean) => !r)} className="rounded border border-black/10 bg-black/5 px-3 py-1 hover:bg-black/10 dark:border-white/10 dark:bg-white/5 dark:hover:bg-white/10">
             {running ? 'Pause' : 'Resume'}
           </button>
-          <button onClick={reset} className="rounded border border-white/10 bg-white/5 px-3 py-1 hover:bg-white/10">Reset</button>
+          <button onClick={reset} className="rounded border border-black/10 bg-black/5 px-3 py-1 hover:bg-black/10 dark:border-white/10 dark:bg-white/5 dark:hover:bg-white/10">Reset</button>
         </div>
       </div>
 
       <div className="mx-auto max-w-md">
         <div
-          className="grid gap-0.5 rounded-xl border border-white/10 bg-white/5 p-2"
+          className="grid gap-0.5 rounded-xl border border-black/10 bg-black/5 p-2 dark:border-white/10 dark:bg-white/5"
           style={{ gridTemplateColumns: `repeat(${GRID}, minmax(0,1fr))` }}
         >
           {Array.from({ length: GRID * GRID }).map((_, i) => {
@@ -144,7 +144,7 @@ export default function SnakePage() {
         </div>
 
         {gameOver && (
-          <div className="mt-4 rounded-lg border border-red-500/20 bg-red-500/10 p-4 text-red-200">
+          <div className="mt-4 rounded-lg border border-red-500/20 bg-red-500/10 p-4 text-red-700 dark:text-red-200">
             Game over. Score: {score}. <button className="underline" onClick={reset}>Play again</button>
           </div>
         )}
@@ -154,7 +154,7 @@ export default function SnakePage() {
         {['up','left','down','right'].map((d) => (
           <button
             key={d}
-            className="rounded-md border border-white/10 bg-white/5 px-4 py-2 text-sm capitalize hover:bg-white/10"
+            className="rounded-md border border-black/10 bg-black/5 px-4 py-2 text-sm capitalize hover:bg-black/10 dark:border-white/10 dark:bg-white/5 dark:hover:bg-white/10"
             onClick={() => {
               const next = d as Dir
               const isOpposite = (a: Dir, b: Dir) => (a === 'up' && b === 'down') || (a === 'down' && b === 'up') || (a === 'left' && b === 'right') || (a === 'right' && b === 'left')

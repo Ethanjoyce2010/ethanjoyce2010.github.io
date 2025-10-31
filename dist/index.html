@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" class="dark">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,10 +12,23 @@
   <meta property="og:image" content="./og.svg" />
     <title>Ethan Sanders – Developer</title>
   <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
-    <script type="module" crossorigin src="/assets/index-xX8aI47F.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-DZobgoMH.css">
+  <script>
+    // Set initial theme before paint to avoid flash
+    (function() {
+      try {
+        const stored = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const isDark = stored ? stored === 'dark' : prefersDark;
+        document.documentElement.classList.toggle('dark', isDark);
+      } catch (e) {
+        // no-op
+      }
+    })();
+  </script>
+    <script type="module" crossorigin src="/assets/index-D8ZCUENq.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-DaAJn6M5.css">
   </head>
-  <body class="bg-gray-950 text-gray-100 antialiased">
+  <body class="antialiased">
     <div id="root"></div>
   </body>
 </html>

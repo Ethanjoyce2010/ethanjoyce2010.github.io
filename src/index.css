@@ -4,16 +4,28 @@
 
 /* Custom base styles */
 :root {
-  color-scheme: dark;
+  color-scheme: light dark;
 }
 
 html, body, #root {
   height: 100%;
 }
 
+/* Base body colors for both themes */
+body {
+  @apply bg-white text-gray-900;
+}
+.dark body {
+  @apply bg-background text-gray-100;
+}
+
 /* Subtle card glass effect */
 .card-glass {
-  @apply bg-white/5 backdrop-blur-md border border-white/10 shadow-glow;
+  @apply backdrop-blur-md border shadow-glow;
+  @apply border-black/10 bg-black/[.04];
+}
+.dark .card-glass {
+  @apply border-white/10 bg-white/5;
 }
 
 .section {
@@ -21,9 +33,17 @@ html, body, #root {
 }
 
 .section-title {
-  @apply text-2xl md:text-3xl font-semibold tracking-tight text-white/90;
+  @apply text-2xl md:text-3xl font-semibold tracking-tight;
+  @apply text-gray-900;
+}
+.dark .section-title {
+  @apply text-white/90;
 }
 
 .section-subtitle {
-  @apply text-sm text-gray-400;
+  @apply text-sm;
+  @apply text-gray-600;
+}
+.dark .section-subtitle {
+  @apply text-gray-400;
 }
