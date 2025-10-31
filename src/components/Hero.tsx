@@ -1,6 +1,9 @@
 import { motion } from 'framer-motion'
+import { WeatherBlurb } from './WeatherBlurb'
 
 export function Hero() {
+  const hour = new Date().getHours()
+  const greeting = hour < 12 ? 'Good morning' : hour < 18 ? 'Good afternoon' : 'Good evening'
   return (
     <section id="top" className="section relative py-16 md:py-24">
       <div className="grid gap-8 md:grid-cols-[1.2fr_0.8fr] md:items-center">
@@ -11,6 +14,7 @@ export function Hero() {
             transition={{ duration: 0.6 }}
             className="text-3xl font-semibold leading-tight text-gray-900 dark:text-white/95 md:text-5xl"
           >
+            <span className="block text-base font-normal text-gray-600 dark:text-gray-400">{greeting} — I’m</span>
             Ethan Sanders
           </motion.h1>
           <motion.p
@@ -22,6 +26,15 @@ export function Hero() {
             Passionate about coding, problem solving, and open source. Exploring web
             development, automation, and tooling. I love building small utilities and
             creative side‑projects.
+          </motion.p>
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.15, duration: 0.6 }}
+            className="typewriter text-sm text-gray-600 dark:text-gray-400"
+            style={{ ['--tw-ch' as any]: 40, ['--tw-steps' as any]: 40 }}
+          >
+            Building things I wish already existed.
           </motion.p>
 
           <motion.div
@@ -44,6 +57,14 @@ export function Hero() {
             >
               Visit GitHub
             </a>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.6 }}
+          >
+            <WeatherBlurb />
           </motion.div>
         </div>
 

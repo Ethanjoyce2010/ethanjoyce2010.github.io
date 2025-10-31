@@ -30,7 +30,7 @@ function RepoCard({ repo }: { repo: Pick<Repo, 'name' | 'description' | 'languag
       href={repo.html_url}
       target="_blank"
       rel="noreferrer"
-      className="group card-glass block h-full rounded-xl p-5 transition hover:-translate-y-0.5 hover:bg-black/10 dark:hover:bg-white/[.06]"
+  className="group card-glass block h-full rounded-xl p-5 transition hover:-translate-y-1 hover:shadow-lg hover:shadow-cyan-500/10 hover:bg-black/10 dark:hover:bg-white/[.06]"
     >
       <div className="flex items-start justify-between gap-3">
         <h3 className="text-base font-semibold text-gray-900 dark:text-white/90">{repo.name}</h3>

@@ -18,15 +18,18 @@
       try {
         const stored = localStorage.getItem('theme');
         const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-        const isDark = stored ? stored === 'dark' : prefersDark;
+        // Default to dark when no stored preference
+        const isDark = stored ? stored === 'dark' : true || prefersDark;
         document.documentElement.classList.toggle('dark', isDark);
+        var m = document.querySelector('meta[name="theme-color"]');
+        if (m) m.setAttribute('content', isDark ? '#0b0f19' : '#ffffff');
       } catch (e) {
         // no-op
       }
     })();
   </script>
-    <script type="module" crossorigin src="/assets/index-D8ZCUENq.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-DaAJn6M5.css">
+    <script type="module" crossorigin src="/assets/index-B8w3mLsJ.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-DQ4QSda5.css">
   </head>
   <body class="antialiased">
     <div id="root"></div>

@@ -33,7 +33,16 @@ export default {
       backgroundImage: {
         'grid-fade':
           'radial-gradient(circle at 1px 1px, rgba(255,255,255,.08) 1px, transparent 0)'
-      }
+      },
+      keyframes: {
+        'grid-pan': {
+          '0%': { backgroundPosition: '0px 0px' },
+          '100%': { backgroundPosition: '24px 24px' },
+        },
+      },
+      animation: {
+        'grid-pan': 'grid-pan 40s linear infinite',
+      },
     },
   },
   plugins: [],
