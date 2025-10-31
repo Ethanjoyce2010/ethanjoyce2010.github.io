@@ -65,7 +65,7 @@ export default function AboutPage() {
               'Eager to learn',
               'Kind',
               'Patient',
-              'Dry sense of humour',
+              'Humourous',
             ].map((t) => (
               <Badge key={t}>{t}</Badge>
             ))}
