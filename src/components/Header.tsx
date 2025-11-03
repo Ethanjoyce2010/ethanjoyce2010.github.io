@@ -73,7 +73,13 @@ export function Header() {
     <header className="sticky top-0 z-20 w-full border-b border-black/10 bg-white/70 backdrop-blur supports-[backdrop-filter]:bg-white/60 dark:border-white/10 dark:bg-background/60 dark:supports-[backdrop-filter]:bg-background/50">
       <div className="section flex h-14 items-center justify-between">
         <NavLink to="/" className="inline-flex items-center gap-2 text-sm font-semibold text-gray-900 dark:text-white/90">
-          <span className="h-2 w-2 rounded-full bg-cyan-500 shadow-[0_0_20px_rgba(34,211,238,.6)]" />
+          <img
+            src="https://github.com/Ethanjoyce2010.png?size=80"
+            alt="Ethan Sanders avatar"
+            className="h-7 w-7 rounded-full border border-black/10 object-cover dark:border-white/10"
+            loading="eager"
+            decoding="async"
+          />
           Ethan Sanders
         </NavLink>
         <nav className="hidden gap-6 text-sm text-gray-600 dark:text-gray-300 md:flex">
