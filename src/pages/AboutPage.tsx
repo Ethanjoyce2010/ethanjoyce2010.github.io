@@ -1,6 +1,8 @@
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import { Award, GraduationCap, Mail, Wrench, Gamepad2, Cpu, Lightbulb, Terminal, Copy } from 'lucide-react'
+import { Award, GraduationCap, Mail, Wrench, Gamepad2, Cpu, Lightbulb, Terminal, Copy, Briefcase } from 'lucide-react'
+import HireModal from '../components/HireModal'
 
 function Badge({ children }: { children: React.ReactNode }) {
   return (
@@ -12,6 +14,7 @@ function Badge({ children }: { children: React.ReactNode }) {
 
 export default function AboutPage() {
   const email = 'ethan.sanders10@outlook.com'
+  const [isHireModalOpen, setIsHireModalOpen] = useState(false)
 
   const copyEmail = async () => {
     try {
@@ -237,6 +240,25 @@ export default function AboutPage() {
           <li>Gaming</li>
         </ul>
       </motion.div>
+
+      {/* Hire Button */}
+      <motion.div
+        initial={{ opacity: 0, y: 8 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.45, delay: 0.1 }}
+        className="mt-8 flex justify-center"
+      >
+        <button
+          onClick={() => setIsHireModalOpen(true)}
+          className="group inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-cyan-600 to-blue-600 px-6 py-3 text-base font-semibold text-white shadow-lg transition hover:shadow-xl hover:scale-105 dark:from-cyan-500 dark:to-blue-500"
+        >
+          <Briefcase size={20} className="transition group-hover:rotate-12" />
+          Looking to hire someone with my skills?
+        </button>
+      </motion.div>
+
+      {/* Hire Modal */}
+      <HireModal isOpen={isHireModalOpen} onClose={() => setIsHireModalOpen(false)} />
     </section>
   )
 }
