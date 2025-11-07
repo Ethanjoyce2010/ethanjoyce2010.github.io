@@ -1,5 +1,5 @@
 // Seasonal theming utility
-import { isUserInUSA } from './geolocation'
+import { isUserInUSA, getUserCountry } from './geolocation'
 
 export interface SeasonalTheme {
   name: string
@@ -13,6 +13,18 @@ export interface SeasonalTheme {
   emoji: string
 }
 
+// Countries in the Southern Hemisphere (or with reversed seasons)
+const SOUTHERN_HEMISPHERE_COUNTRIES = [
+  'AR', 'AU', 'BO', 'BR', 'CL', 'CO', 'EC', 'FK', 'GF', 'GY', 'NZ', 
+  'PE', 'PY', 'SR', 'UY', 'VE', 'ZA', 'ZW', 'BW', 'NA', 'LS', 'SZ',
+  'MZ', 'MG', 'MW', 'ZM', 'AO', 'TZ', 'KE', 'ID', 'TL', 'PG', 'FJ'
+]
+
+async function isInSouthernHemisphere(): Promise<boolean> {
+  const location = await getUserCountry()
+  return location.countryCode ? SOUTHERN_HEMISPHERE_COUNTRIES.includes(location.countryCode) : false
+}
+
 export async function getCurrentSeason(): Promise<SeasonalTheme> {
   const now = new Date()
   const month = now.getMonth() + 1 // 1-12
@@ -20,6 +32,9 @@ export async function getCurrentSeason(): Promise<SeasonalTheme> {
 
   // Check if user is in USA for USA-specific holidays
   const isUSA = await isUserInUSA()
+  
+  // Check if user is in Southern Hemisphere for reversed seasons
+  const isSouthern = await isInSouthernHemisphere()
 
   // December: Christmas
   if (month === 12) {
@@ -111,8 +126,12 @@ export async function getCurrentSeason(): Promise<SeasonalTheme> {
     }
   }
 
-  // Spring (March-May): Cherry blossoms
-  if (month >= 3 && month <= 5) {
+  // Spring (March-May in Northern Hemisphere, September-November in Southern Hemisphere)
+  const isSpringMonth = isSouthern 
+    ? (month === 9 || month === 10 || month === 11)
+    : (month === 3 || month === 4 || month === 5)
+  
+  if (isSpringMonth && !(month === 10 && !isSouthern) && !(month === 11 && isUSA && !isSouthern)) {
     return {
       name: 'Spring',
       colors: {
@@ -126,8 +145,12 @@ export async function getCurrentSeason(): Promise<SeasonalTheme> {
     }
   }
 
-  // Summer (June-August): Sunny vibes
-  if (month >= 6 && month <= 8) {
+  // Summer (June-August in Northern Hemisphere, December-February in Southern Hemisphere)
+  const isSummerMonth = isSouthern
+    ? (month === 12 || month === 1 || month === 2)
+    : (month === 6 || month === 7 || month === 8)
+  
+  if (isSummerMonth && !(month === 12 && !isSouthern) && !(month === 2 && day <= 14 && !isSouthern) && !(month === 7 && day <= 7 && isUSA && !isSouthern)) {
     return {
       name: 'Summer',
       colors: {
@@ -136,13 +159,17 @@ export async function getCurrentSeason(): Promise<SeasonalTheme> {
         accent: '#ff6347', // Tomato
         background: 'rgba(255, 215, 0, 0.05)'
       },
-      message: '☀️ Happy Summer! 🏖️',
+      message: isSouthern ? '☀️ Happy Summer! 🏖️' : '☀️ Happy Summer! 🏖️',
       emoji: '☀️'
     }
   }
 
-  // Fall/Autumn (September-November except when Thanksgiving shows for US users)
-  if (month === 9 || (month === 11 && !isUSA)) {
+  // Fall/Autumn (September-November in Northern Hemisphere, March-May in Southern Hemisphere)
+  const isAutumnMonth = isSouthern
+    ? (month === 3 || month === 4 || month === 5)
+    : (month === 9 || month === 10 || month === 11)
+  
+  if (isAutumnMonth && !(month === 10 && isSouthern) && !(month === 11 && isUSA && isSouthern) && !(month === 3 && day >= 10 && day <= 17 && isSouthern)) {
     return {
       name: 'Autumn',
       colors: {
@@ -156,8 +183,12 @@ export async function getCurrentSeason(): Promise<SeasonalTheme> {
     }
   }
 
-  // Winter (January-February, except Valentine's)
-  if (month === 1 || (month === 2 && day > 14)) {
+  // Winter (December-February in Northern Hemisphere, June-August in Southern Hemisphere)
+  const isWinterMonth = isSouthern
+    ? (month === 6 || month === 7 || month === 8)
+    : (month === 1 || month === 2 || month === 12)
+  
+  if (isWinterMonth && !(month === 12 && !isSouthern) && !(month === 2 && day <= 14 && !isSouthern)) {
     return {
       name: 'Winter',
       colors: {
