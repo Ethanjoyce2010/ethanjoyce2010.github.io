@@ -1,7 +1,10 @@
 import { Header } from './components/Header'
 import { Footer } from './components/Footer'
+import { SeasonalBanner } from './components/SeasonalBanner'
 import { Routes, Route, useLocation } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
+import { useEffect } from 'react'
+import { getCurrentSeason, applySeasonalTheme } from './lib/seasonal'
 import Home from './pages/Home'
 import ProjectsPage from './pages/ProjectsPage'
 import SkillsPage from './pages/SkillsPage'
@@ -14,6 +17,13 @@ import ErrorPage from './pages/ErrorPage'
 export function App() {
   const location = useLocation()
 
+  // Apply seasonal theme on mount
+  useEffect(() => {
+    getCurrentSeason().then(theme => {
+      applySeasonalTheme(theme)
+    })
+  }, [])
+
   return (
     <div className="min-h-screen bg-white text-gray-900 dark:bg-background dark:text-gray-100">
       {/* background visuals */}
@@ -22,6 +32,7 @@ export function App() {
         <div className="absolute inset-0 [mask-image:radial-gradient(ellipse_at_center,black_20%,transparent_70%)] bg-grid-fade bg-[size:24px_24px] animate-grid-pan" />
       </div>
 
+      <SeasonalBanner />
       <Header />
       <main className="pb-10">
         <AnimatePresence mode="wait">

@@ -5,6 +5,11 @@
 /* Custom base styles */
 :root {
   color-scheme: light dark;
+  /* Seasonal theme variables (dynamically set by JS) */
+  --seasonal-primary: #3b82f6;
+  --seasonal-secondary: #8b5cf6;
+  --seasonal-accent: #22d3ee;
+  --seasonal-background: rgba(59, 130, 246, 0.05);
 }
 
 html, body, #root {
@@ -26,6 +31,23 @@ body {
 }
 .dark .card-glass {
   @apply border-white/10 bg-white/5;
+}
+
+/* Seasonal accent for hover effects */
+.seasonal-hover {
+  transition: all 0.3s ease;
+}
+.seasonal-hover:hover {
+  border-color: var(--seasonal-primary);
+  box-shadow: 0 0 20px var(--seasonal-background);
+}
+
+/* Seasonal banner styles */
+.seasonal-banner {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.dark .seasonal-banner {
+  border-bottom-color: rgba(255, 255, 255, 0.1);
 }
 
 .section {

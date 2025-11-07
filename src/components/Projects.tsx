@@ -30,13 +30,13 @@ function RepoCard({ repo }: { repo: Pick<Repo, 'name' | 'description' | 'languag
       href={repo.html_url}
       target="_blank"
       rel="noreferrer"
-  className="group card-glass block h-full rounded-xl p-5 transition hover:-translate-y-1 hover:shadow-lg hover:shadow-cyan-500/10 hover:bg-black/10 dark:hover:bg-white/[.06]"
+      className="seasonal-hover group card-glass block h-full rounded-xl p-5 transition hover:-translate-y-1 hover:shadow-lg hover:bg-black/10 dark:hover:bg-white/[.06]"
     >
       <div className="flex items-start justify-between gap-3">
         <h3 className="text-base font-semibold text-gray-900 dark:text-white/90">{repo.name}</h3>
         <Github className="size-4 text-gray-500 dark:text-gray-400 opacity-75 transition group-hover:opacity-100" />
       </div>
-  <p className="mt-2 max-h-12 overflow-hidden text-ellipsis text-sm text-gray-700 dark:text-gray-300">{repo.description || 'No description yet.'}</p>
+      <p className="mt-2 max-h-12 overflow-hidden text-ellipsis text-sm text-gray-700 dark:text-gray-300">{repo.description || 'No description yet.'}</p>
       <div className="mt-4 flex items-center text-xs text-gray-500 dark:text-gray-400">
         <span className="rounded border border-black/10 bg-black/[.04] px-2 py-1 dark:border-white/10 dark:bg-white/5">{repo.language || 'Other'}</span>
       </div>

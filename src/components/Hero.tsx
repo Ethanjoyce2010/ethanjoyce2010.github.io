@@ -45,7 +45,11 @@ export function Hero() {
           >
             <a
               href="#projects"
-              className="rounded-lg bg-cyan-500 px-4 py-2.5 text-sm font-medium text-gray-900 shadow-glow transition hover:bg-cyan-400"
+              className="seasonal-hover rounded-lg bg-cyan-500 px-4 py-2.5 text-sm font-medium text-gray-900 shadow-glow transition hover:bg-cyan-400"
+              style={{ 
+                backgroundColor: 'var(--seasonal-primary)',
+                color: '#fff'
+              }}
             >
               See projects
             </a>
@@ -53,7 +57,7 @@ export function Hero() {
               href="https://github.com/Ethanjoyce2010"
               target="_blank"
               rel="noreferrer"
-              className="rounded-lg border border-black/10 px-4 py-2.5 text-sm font-medium text-gray-900 transition hover:bg-black/5 dark:border-white/15 dark:text-white/90 dark:hover:bg-white/5"
+              className="seasonal-hover rounded-lg border border-black/10 px-4 py-2.5 text-sm font-medium text-gray-900 transition hover:bg-black/5 dark:border-white/15 dark:text-white/90 dark:hover:bg-white/5"
             >
               Visit GitHub
             </a>
