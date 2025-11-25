@@ -85,11 +85,11 @@ export default function HireModal({ isOpen, onClose }: HireModalProps) {
       />
 
       {/* Modal */}
-      <div className="relative z-10 w-full max-w-2xl max-h-[90vh] overflow-y-auto card-glass rounded-2xl p-6 md:p-8">
+      <div className="relative z-10 w-full max-w-2xl max-h-[90vh] overflow-y-auto card-glass rounded-3xl p-6 md:p-8">
         {/* Close button */}
         <button
           onClick={onClose}
-          className="absolute right-4 top-4 rounded-lg p-2 text-gray-500 hover:bg-black/5 dark:hover:bg-white/5"
+          className="absolute right-4 top-4 rounded-xl p-2 text-gray-500 hover:bg-black/5 dark:hover:bg-white/5"
           aria-label="Close"
         >
           <X size={20} />
@@ -121,7 +121,7 @@ export default function HireModal({ isOpen, onClose }: HireModalProps) {
               value={formData.company}
               onChange={handleChange}
               required
-              className="w-full rounded-lg border border-black/10 bg-white/50 px-4 py-2.5 text-sm text-gray-900 placeholder-gray-500 focus:border-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/20 dark:border-white/15 dark:bg-white/5 dark:text-white/90 dark:placeholder-gray-500"
+              className="w-full rounded-xl border border-black/10 bg-white/50 px-4 py-2.5 text-sm text-gray-900 placeholder-gray-500 focus:border-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/20 dark:border-white/15 dark:bg-white/5 dark:text-white/90 dark:placeholder-gray-500"
               placeholder="Your company name"
             />
           </div>
@@ -140,7 +140,7 @@ export default function HireModal({ isOpen, onClose }: HireModalProps) {
               value={formData.pay}
               onChange={handleChange}
               required
-              className="w-full rounded-lg border border-black/10 bg-white/50 px-4 py-2.5 text-sm text-gray-900 placeholder-gray-500 focus:border-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/20 dark:border-white/15 dark:bg-white/5 dark:text-white/90 dark:placeholder-gray-500"
+              className="w-full rounded-xl border border-black/10 bg-white/50 px-4 py-2.5 text-sm text-gray-900 placeholder-gray-500 focus:border-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/20 dark:border-white/15 dark:bg-white/5 dark:text-white/90 dark:placeholder-gray-500"
               placeholder="e.g., $50,000/year or $25/hour"
             />
           </div>
@@ -159,7 +159,7 @@ export default function HireModal({ isOpen, onClose }: HireModalProps) {
               value={formData.contact}
               onChange={handleChange}
               required
-              className="w-full rounded-lg border border-black/10 bg-white/50 px-4 py-2.5 text-sm text-gray-900 placeholder-gray-500 focus:border-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/20 dark:border-white/15 dark:bg-white/5 dark:text-white/90 dark:placeholder-gray-500"
+              className="w-full rounded-xl border border-black/10 bg-white/50 px-4 py-2.5 text-sm text-gray-900 placeholder-gray-500 focus:border-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/20 dark:border-white/15 dark:bg-white/5 dark:text-white/90 dark:placeholder-gray-500"
               placeholder="Email or phone number"
             />
           </div>
@@ -178,19 +178,19 @@ export default function HireModal({ isOpen, onClose }: HireModalProps) {
               onChange={handleChange}
               required
               rows={6}
-              className="w-full rounded-lg border border-black/10 bg-white/50 px-4 py-2.5 text-sm text-gray-900 placeholder-gray-500 focus:border-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/20 dark:border-white/15 dark:bg-white/5 dark:text-white/90 dark:placeholder-gray-500"
+              className="w-full rounded-xl border border-black/10 bg-white/50 px-4 py-2.5 text-sm text-gray-900 placeholder-gray-500 focus:border-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/20 dark:border-white/15 dark:bg-white/5 dark:text-white/90 dark:placeholder-gray-500"
               placeholder="Please describe in detail what the role would involve, responsibilities, requirements, and any other relevant information..."
             />
           </div>
 
           {/* Submit status */}
           {submitStatus === 'success' && (
-            <div className="rounded-lg bg-green-50 p-3 text-sm text-green-700 dark:bg-green-900/20 dark:text-green-400">
+            <div className="rounded-xl bg-green-50 p-3 text-sm text-green-700 dark:bg-green-900/20 dark:text-green-400">
               Thank you! Your inquiry has been submitted successfully.
             </div>
           )}
           {submitStatus === 'error' && (
-            <div className="rounded-lg bg-red-50 p-3 text-sm text-red-700 dark:bg-red-900/20 dark:text-red-400">
+            <div className="rounded-xl bg-red-50 p-3 text-sm text-red-700 dark:bg-red-900/20 dark:text-red-400">
               Sorry, there was an error submitting the form. Please try again or contact me directly.
             </div>
           )}
@@ -200,14 +200,14 @@ export default function HireModal({ isOpen, onClose }: HireModalProps) {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="flex-1 rounded-lg bg-cyan-600 px-4 py-2.5 text-sm font-medium text-white transition hover:bg-cyan-700 disabled:opacity-50 dark:bg-cyan-500 dark:hover:bg-cyan-600"
+              className="flex-1 rounded-xl bg-cyan-600 px-4 py-2.5 text-sm font-medium text-white transition hover:bg-cyan-700 disabled:opacity-50 dark:bg-cyan-500 dark:hover:bg-cyan-600"
             >
               {isSubmitting ? 'Submitting...' : 'Submit Inquiry'}
             </button>
             <button
               type="button"
               onClick={onClose}
-              className="rounded-lg border border-black/10 px-4 py-2.5 text-sm font-medium text-gray-700 transition hover:bg-black/5 dark:border-white/15 dark:text-gray-300 dark:hover:bg-white/5"
+              className="rounded-xl border border-black/10 px-4 py-2.5 text-sm font-medium text-gray-700 transition hover:bg-black/5 dark:border-white/15 dark:text-gray-300 dark:hover:bg-white/5"
             >
               Cancel
             </button>

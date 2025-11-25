@@ -45,7 +45,7 @@ export function Hero() {
           >
             <a
               href="#projects"
-              className="seasonal-hover rounded-lg bg-cyan-500 px-4 py-2.5 text-sm font-medium text-gray-900 shadow-glow transition hover:bg-cyan-400"
+              className="seasonal-hover rounded-full bg-cyan-500 px-6 py-2.5 text-sm font-medium text-gray-900 shadow-glow transition hover:bg-cyan-400"
               style={{ 
                 backgroundColor: 'var(--seasonal-primary)',
                 color: '#fff'

@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
-import { motion } from 'framer-motion'
 import { Github } from 'lucide-react'
 import { fetchRepos, type Repo } from '../lib/github'
+import { FadeIn } from './FadeIn'
 
 const FEATURED: Array<Pick<Repo, 'name' | 'description' | 'language' | 'html_url'>> = [
   {
@@ -30,7 +30,7 @@ function RepoCard({ repo }: { repo: Pick<Repo, 'name' | 'description' | 'languag
       href={repo.html_url}
       target="_blank"
       rel="noreferrer"
-      className="seasonal-hover group card-glass block h-full rounded-xl p-5 transition hover:-translate-y-1 hover:shadow-lg hover:bg-black/10 dark:hover:bg-white/[.06]"
+      className="seasonal-hover group card-glass block h-full rounded-2xl p-5 transition hover:-translate-y-1 hover:shadow-xl hover:bg-black/10 dark:hover:bg-white/[.06]"
     >
       <div className="flex items-start justify-between gap-3">
         <h3 className="text-base font-semibold text-gray-900 dark:text-white/90">{repo.name}</h3>
@@ -38,7 +38,7 @@ function RepoCard({ repo }: { repo: Pick<Repo, 'name' | 'description' | 'languag
       </div>
       <p className="mt-2 max-h-12 overflow-hidden text-ellipsis text-sm text-gray-700 dark:text-gray-300">{repo.description || 'No description yet.'}</p>
       <div className="mt-4 flex items-center text-xs text-gray-500 dark:text-gray-400">
-        <span className="rounded border border-black/10 bg-black/[.04] px-2 py-1 dark:border-white/10 dark:bg-white/5">{repo.language || 'Other'}</span>
+        <span className="rounded-lg border border-black/10 bg-black/[.04] px-2 py-1 dark:border-white/10 dark:bg-white/5">{repo.language || 'Other'}</span>
       </div>
     </a>
   )
@@ -83,38 +83,32 @@ export function Projects() {
 
   return (
     <section id="projects" className="section py-14 md:py-20">
-      <div className="mb-6 flex items-end justify-between">
-        <div>
-          <h2 className="section-title">Projects</h2>
-          <p className="section-subtitle">Things I build, explore, and tinker with</p>
+      <FadeIn>
+        <div className="mb-6 flex items-end justify-between">
+          <div>
+            <h2 className="section-title">Projects</h2>
+            <p className="section-subtitle">Things I build, explore, and tinker with</p>
+          </div>
+          <a
+            href="https://github.com/Ethanjoyce2010?tab=repositories"
+            target="_blank"
+            rel="noreferrer"
+            className="text-sm text-cyan-400 hover:underline"
+          >
+            View all →
+          </a>
         </div>
-        <a
-          href="https://github.com/Ethanjoyce2010?tab=repositories"
-          target="_blank"
-          rel="noreferrer"
-          className="text-sm text-cyan-400 hover:underline"
-        >
-          View all →
-        </a>
-      </div>
+      </FadeIn>
 
-      {error && (
-        <div className="mb-6 rounded-lg border border-red-500/20 bg-red-500/10 p-4 text-sm text-red-200">
-          {error}
-        </div>
-      )}
+      {error && <div className="text-red-500">{error}</div>}
 
-      <motion.div
-        initial={{ opacity: 0, y: 6 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.5 }}
-        className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3"
-      >
-        {combined.map((repo) => (
-          <RepoCard key={repo.html_url} repo={repo} />
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {combined.map((repo, i) => (
+          <FadeIn key={repo.name} delay={i * 0.1}>
+            <RepoCard repo={repo} />
+          </FadeIn>
         ))}
-      </motion.div>
+      </div>
     </section>
   )
 }

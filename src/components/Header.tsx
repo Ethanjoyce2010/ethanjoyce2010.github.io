@@ -1,6 +1,7 @@
 import { Github, Mail, Moon, Sun } from 'lucide-react'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { useCallback, useEffect, useRef, useState } from 'react'
+import { motion } from 'framer-motion'
 
 export function Header() {
   const navigate = useNavigate()
@@ -83,20 +84,42 @@ export function Header() {
           Ethan Sanders
         </NavLink>
         <nav className="hidden gap-6 text-sm text-gray-600 dark:text-gray-300 md:flex">
-          <NavLink to="/projects" onClick={handleProjectsClick} className={({isActive}: {isActive: boolean}) => isActive ? 'text-gray-900 dark:text-white' : 'hover:text-gray-900 dark:hover:text-white'}>Projects</NavLink>
-          <NavLink to="/skills" className={({isActive}: {isActive: boolean}) => isActive ? 'text-gray-900 dark:text-white' : 'hover:text-gray-900 dark:hover:text-white'}>Skills</NavLink>
-          <NavLink to="/accomplishments" className={({isActive}: {isActive: boolean}) => isActive ? 'text-gray-900 dark:text-white' : 'hover:text-gray-900 dark:hover:text-white'}>Accomplishments</NavLink>
-          <NavLink to="/about" className={({isActive}: {isActive: boolean}) => isActive ? 'text-gray-900 dark:text-white' : 'hover:text-gray-900 dark:hover:text-white'}>About</NavLink>
-          <NavLink to="/contact" className={({isActive}: {isActive: boolean}) => isActive ? 'text-gray-900 dark:text-white' : 'hover:text-gray-900 dark:hover:text-white'}>Contact</NavLink>
+          {['Projects', 'Skills', 'Accomplishments', 'About', 'Contact'].map((item) => (
+            <NavLink
+              key={item}
+              to={`/${item.toLowerCase()}`}
+              onClick={item === 'Projects' ? handleProjectsClick : undefined}
+              className={({ isActive }) =>
+                `relative px-1 py-1 transition-colors ${
+                  isActive
+                    ? 'text-gray-900 dark:text-white'
+                    : 'hover:text-gray-900 dark:hover:text-white'
+                }`
+              }
+            >
+              {({ isActive }) => (
+                <>
+                  {item}
+                  {isActive && (
+                    <motion.div
+                      layoutId="activeTab"
+                      className="absolute -bottom-[1px] left-0 right-0 h-[3px] rounded-full bg-cyan-500 dark:bg-cyan-400"
+                      transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                    />
+                  )}
+                </>
+              )}
+            </NavLink>
+          ))}
         </nav>
         <div className="flex items-center gap-2">
-          <button aria-label="Toggle theme" onClick={toggleTheme} className="rounded-md p-2 text-gray-700 hover:bg-black/5 dark:text-gray-200 dark:hover:bg-white/5">
+          <button aria-label="Toggle theme" onClick={toggleTheme} className="rounded-full p-2 text-gray-700 hover:bg-black/5 dark:text-gray-200 dark:hover:bg-white/5">
             {theme === 'dark' ? <Sun className="size-5" /> : <Moon className="size-5" />}
           </button>
-          <a aria-label="GitHub" className="rounded-md p-2 text-gray-700 hover:bg-black/5 dark:text-inherit dark:hover:bg-white/5" href="https://github.com/Ethanjoyce2010" target="_blank" rel="noreferrer">
+          <a aria-label="GitHub" className="rounded-full p-2 text-gray-700 hover:bg-black/5 dark:text-inherit dark:hover:bg-white/5" href="https://github.com/Ethanjoyce2010" target="_blank" rel="noreferrer">
             <Github className="size-5" />
           </a>
-          <a aria-label="Email" className="rounded-md p-2 text-gray-700 hover:bg-black/5 dark:text-inherit dark:hover:bg-white/5" href="mailto:Ethan.sanders10@outlook.com">
+          <a aria-label="Email" className="rounded-full p-2 text-gray-700 hover:bg-black/5 dark:text-inherit dark:hover:bg-white/5" href="mailto:Ethan.sanders10@outlook.com">
             <Mail className="size-5" />
           </a>
         </div>

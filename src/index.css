@@ -26,20 +26,21 @@ body {
 
 /* Subtle card glass effect */
 .card-glass {
-  @apply backdrop-blur-md border shadow-glow;
-  @apply border-black/10 bg-black/[.04];
+  @apply backdrop-blur-2xl backdrop-saturate-150 border shadow-glow rounded-2xl;
+  @apply border-white/20 bg-gradient-to-br from-white/30 to-white/10;
 }
 .dark .card-glass {
-  @apply border-white/10 bg-white/5;
+  @apply border-white/10 bg-gradient-to-br from-white/10 to-white/5;
 }
 
 /* Seasonal accent for hover effects */
 .seasonal-hover {
-  transition: all 0.3s ease;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .seasonal-hover:hover {
   border-color: var(--seasonal-primary);
-  box-shadow: 0 0 20px var(--seasonal-background);
+  box-shadow: 0 8px 32px var(--seasonal-background);
+  transform: translateY(-2px) scale(1.01);
 }
 
 /* Seasonal banner styles */
