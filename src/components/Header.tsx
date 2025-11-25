@@ -1,10 +1,11 @@
-import { Github, Mail, Moon, Sun } from 'lucide-react'
+import { Github, Mail, Moon, Sun, Menu, X } from 'lucide-react'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 
 export function Header() {
   const navigate = useNavigate()
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [theme, setTheme] = useState<'light' | 'dark'>(() =>
     document.documentElement.classList.contains('dark') ? 'dark' : 'light'
   )
@@ -122,8 +123,46 @@ export function Header() {
           <a aria-label="Email" className="rounded-full p-2 text-gray-700 hover:bg-black/5 dark:text-inherit dark:hover:bg-white/5" href="mailto:Ethan.sanders10@outlook.com">
             <Mail className="size-5" />
           </a>
+          <button
+            aria-label="Toggle menu"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="rounded-full p-2 text-gray-700 hover:bg-black/5 dark:text-gray-200 dark:hover:bg-white/5 md:hidden"
+          >
+            {isMenuOpen ? <X className="size-5" /> : <Menu className="size-5" />}
+          </button>
         </div>
       </div>
+
+      {isMenuOpen && (
+        <motion.div
+          initial={{ opacity: 0, height: 0 }}
+          animate={{ opacity: 1, height: 'auto' }}
+          exit={{ opacity: 0, height: 0 }}
+          className="border-t border-black/10 bg-white/95 backdrop-blur dark:border-white/10 dark:bg-background/95 md:hidden"
+        >
+          <nav className="flex flex-col p-4">
+            {['Projects', 'Skills', 'Accomplishments', 'About', 'Contact'].map((item) => (
+              <NavLink
+                key={item}
+                to={`/${item.toLowerCase()}`}
+                onClick={(e) => {
+                  setIsMenuOpen(false)
+                  if (item === 'Projects') handleProjectsClick(e)
+                }}
+                className={({ isActive }) =>
+                  `py-3 text-base font-medium transition-colors ${
+                    isActive
+                      ? 'text-cyan-600 dark:text-cyan-400'
+                      : 'text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white'
+                  }`
+                }
+              >
+                {item}
+              </NavLink>
+            ))}
+          </nav>
+        </motion.div>
+      )}
     </header>
   )
 }

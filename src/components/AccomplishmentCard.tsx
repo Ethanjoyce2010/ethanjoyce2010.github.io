@@ -1,5 +1,4 @@
 import { Award, Calendar, ExternalLink } from 'lucide-react'
-import { motion } from 'framer-motion'
 
 export type Accomplishment = {
   id: string
