@@ -33,6 +33,7 @@
     "@typescript-eslint/parser": "^8.11.0",
     "@vitejs/plugin-react-swc": "^3.7.2",
     "autoprefixer": "^10.4.20",
+    "baseline-browser-mapping": "^2.10.0",
     "eslint": "^9.12.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-react": "^7.37.2",
@@ -43,7 +44,7 @@
     "prettier": "^3.3.3",
     "tailwindcss": "^3.4.14",
     "typescript": "^5.6.3",
-    "vite": "^5.4.8",
-    "vitest": "^2.1.4"
+    "vite": "^7.3.1",
+    "vitest": "^4.0.18"
   }
 }
